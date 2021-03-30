@@ -1,0 +1,91 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: home_page
+    label: "Home Page"
+    filter:
+      field: "templateKey"
+      value: "home-page"
+    files:
+      - file: src/pages/index.md
+        label: Home
+        name: index
+        fields:
+          - label: "Template Key"
+            name: templateKey
+            widget: hidden
+            default: home-page
+          - label: "URL Slug"
+            name: slug
+            widget: hidden
+            default: /
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: "Site Title"
+                name: siteTitle
+                widget: string
+                default: "Site Title"
+              - label: "Site Description"
+                name: siteDescription
+                widget: string
+                required: false
+                default: "Site Description"
+          - label: Hero Section
+            name: heroSection
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: "Title"
+                name: title
+                widget: string
+                default: "ATENEO ASSOCIATION FOR COMMUNICATION TECHNOLOGY MANAGEMENT"
+              - label: "Tagline"
+                name: tagline
+                widget: string
+          - label: Photo Section
+            name: photoSection
+            widget: object
+            fields:
+              - label: Background
+                name: background
+                widget: image
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                field: { label: Image, name: image, widget: image }
+          - label: Quote Section
+            name: quoteSection
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: "Quote"
+                name: quote
+                widget: text
+          - label: MAD Section
+            name: madSection
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: "Tagline"
+                name: tagline
+                widget: text
+              - label: "Button Visible"
+                name: buttonVisible
+                widget: boolean
+                default: true
+              - label: "Button Text"
+                name: buttonText
+                widget: string
